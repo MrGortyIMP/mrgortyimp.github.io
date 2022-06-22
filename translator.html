@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<title>Translator</title>
+		<style type="text/css">
+			body{
+				text-align: center;
+				font-size: 150%;
+				background: linear-gradient(to bottom left, #e3c3a1, #ede991);
+			}
+		</style>
+	</head><body>
+		<div id="menu">Переводчик <a href="index.html">Главная</a> <a href="commandblockbattle.html">Соревнования КБ</a></div><br>
+		Translator RU -> JAW<br>
+    	<input type="text" placeholder="RU to JAW" id="own" maxlength="34">
+    	<button type="button" onclick="translateRuJaw();">Перевести</button><br>
+    	<div id="clow">{перевод}</div>
+    
+    <script>
+        function translateRuJaw(){
+            var myStr = document.getElementById("own").value;
+			var myArr = [...myStr];
+			for(i = myArr.length; i >= 1; i -= 1){
+   						var a = myArr[0];
+   						myArr.shift();
+			    if(a == "а"){
+        			myArr.push("ja");
+    			};
+    			if(a == "б"){
+        			myArr.push("boo");
+    			};
+    			if(a == "в"){
+    			    myArr.push("bi");
+    			};
+    			if(a == "г"){
+        			myArr.push("dig");
+    			};
+    			if(a == "д"){
+        			myArr.push("di");
+    			};
+    			if(a == "е"){
+    			    myArr.push("ejo");
+    			};
+    			if(a == "ё"){
+        			myArr.push("ejo'");
+    			};
+    			if(a == "ж"){
+        			myArr.push("zshc");
+    			};
+    			if(a == "з"){
+        			myArr.push("zsh");
+    			};
+    			if(a == "и"){
+        			myArr.push("u");
+    			};
+    			if(a == "й"){
+        			myArr.push("ju");
+    			};
+    			if(a == "к"){
+        			myArr.push("ka");
+    			};
+    			if(a == "л"){
+        			myArr.push("li");
+    			};
+    			if(a == "м"){
+        			myArr.push("mi");
+    			};
+    			if(a == "н"){
+        			myArr.push("nh");
+    			};
+    			if(a == "о"){
+        			myArr.push("uo")
+    			};
+    			if(a == "п"){
+        			myArr.push("Pi")
+    			};
+    			if(a == "р"){
+        			myArr.push("ri")
+    			};
+    			if(a == "ц"){
+        			myArr.push("c:hje")
+    			};
+    			if(a == "т"){
+        			myArr.push("ti")
+    			};
+    			if(a == "у"){
+        			myArr.push("uui")
+    			};
+    			if(a == "ф"){
+        			myArr.push("f")
+    			};
+    			if(a == "х"){
+        			myArr.push("hi")
+    			};
+    			if(a == "с"){
+        			myArr.push("c")
+    			};
+    			if(a == "ч"){
+        			myArr.push("ch")
+    			};
+    			if(a == "ш"){
+        			myArr.push("sch")
+    			};
+    			if(a == "щ"){
+        			myArr.push("sch'")
+    			};
+    			if(a == "ь"){
+        			myArr.push(":'")
+    			};
+    			if(a == "ы"){
+        			myArr.push("ioes")
+    			};
+    			if(a == "ъ"){
+        			myArr.push(":{")
+    			};
+    			if(a == "э"){
+        			myArr.push("eor")
+    			};
+    			if(a == "ю"){
+        			myArr.push("uuor")
+    			};
+    			if(a == "я"){
+        			myArr.push("jaor")
+    			};
+    			if(a == " "){
+        			myArr.push("+")
+    			};
+    			if(a == ","){
+        			myArr.push("+:+")
+    			};
+    			if(a == "."){
+        			myArr.push("-:-")
+    			};
+    			if(a == "+"){
+			        myArr.push("1++")
+    			};
+    			if(a == "-"){
+        			myArr.push("1--")
+    			};
+    			if(a == "*"){
+        			myArr.push("1*")
+    			};
+    			if(a == "/" || a == "\\"){
+        			myArr.push("1\\")
+    			};
+    			if(a == "%"){
+        			myArr.push("1%1")
+    			};
+    			if(a == "!"){
+        			myArr.push("W!")
+    			};
+    			if(a == "?"){
+        			myArr.push("V!")
+    			};
+			}
+			var result = myArr.join("")
+			document.getElementById("clow").innerHTML = result;
+        			}
+    </script>
+	</body>
+</html>
