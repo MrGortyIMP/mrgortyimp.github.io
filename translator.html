@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Translator</title>
+        <link rel="stylesheet" type="text/css" href="links_a-tag.css">
 		<style type="text/css">
 			body{
 				text-align: center;
@@ -12,132 +13,131 @@
 			}
 		</style>
 	</head><body>
-		<div id="menu"><a href="skyblock.html">SkyBlock</a> Переводчик <a href="index.html">Главная</a> <a href="commandblockbattle.html">Соревнования КБ</a></div><br>
+		<div id="menu"><a href="index.html">Вернуться на главную страницу ↩</a></div><br>
 		Translator RU -> JAW<br>
-    	<input type="text" placeholder="RU to JAW" id="own" maxlength="34">
-    	<button type="button" onclick="translateRuJaw();">Перевести</button><br>
-    	<div id="clow">{translate.json}</div>
+    	<input type="text" placeholder="RU to JAW" id="translateInput" maxlength="64" onchange="translateRuJaw();">
+    	<div id="translateOutput">(Здесь будет перевод)</div>
     
     <script>
         function translateRuJaw(){
-            var myStr = document.getElementById("own").value;
+            var myStr = document.getElementById("translateInput").value;
 			var myArr = [...myStr];
 			for(i = myArr.length; i >= 1; i -= 1){
    						var a = myArr[0];
    						myArr.shift();
-			    if(a == "а"){
+				if(a == "а" || a == "А"){
         			myArr.push("ja");
     			};
-    			if(a == "б"){
+    			if(a == "б" || a == "Б"){
         			myArr.push("boo");
     			};
-    			if(a == "в"){
+    			if(a == "в" || a == "В"){
     			    myArr.push("bi");
     			};
-    			if(a == "г"){
+    			if(a == "г" || a == "Г"){
         			myArr.push("dig");
     			};
-    			if(a == "д"){
+    			if(a == "д" || a == "Д"){
         			myArr.push("di");
     			};
-    			if(a == "е"){
+    			if(a == "е" || a == "Е"){
     			    myArr.push("ejo");
     			};
-    			if(a == "ё"){
+    			if(a == "ё" || a == "Ё"){
         			myArr.push("ejo'");
     			};
-    			if(a == "ж"){
+    			if(a == "ж" || a == "Ж"){
         			myArr.push("zshc");
     			};
-    			if(a == "з"){
+    			if(a == "з" || a == "З"){
         			myArr.push("zsh");
     			};
-    			if(a == "и"){
+    			if(a == "и" || a == "И"){
         			myArr.push("u");
     			};
-    			if(a == "й"){
+    			if(a == "й" || a == "Й"){
         			myArr.push("ju");
     			};
-    			if(a == "к"){
+    			if(a == "к" || a == "К"){
         			myArr.push("ka");
     			};
-    			if(a == "л"){
+    			if(a == "л" || a == "Л"){
         			myArr.push("li");
     			};
-    			if(a == "м"){
+    			if(a == "м" || a == "М"){
         			myArr.push("mi");
     			};
-    			if(a == "н"){
+    			if(a == "н" || a == "Н"){
         			myArr.push("nh");
     			};
-    			if(a == "о"){
+    			if(a == "о" || a == "О"){
         			myArr.push("uo")
     			};
-    			if(a == "п"){
+    			if(a == "п" || a == "П"){
         			myArr.push("Pi")
     			};
-    			if(a == "р"){
+    			if(a == "р" || a == "Р"){
         			myArr.push("ri")
     			};
-    			if(a == "ц"){
+    			if(a == "ц" || a == "Ц"){
         			myArr.push("c:hje")
     			};
-    			if(a == "т"){
+    			if(a == "т" || a == "Т"){
         			myArr.push("ti")
     			};
-    			if(a == "у"){
+    			if(a == "у" || a == "У"){
         			myArr.push("uui")
     			};
-    			if(a == "ф"){
+    			if(a == "ф" || a == "Ф"){
         			myArr.push("f")
     			};
-    			if(a == "х"){
+    			if(a == "х" || a == "Х"){
         			myArr.push("hi")
     			};
-    			if(a == "с"){
+    			if(a == "с" || a == "С"){
         			myArr.push("c")
     			};
-    			if(a == "ч"){
+    			if(a == "ч" || a == "Ч"){
         			myArr.push("ch")
     			};
-    			if(a == "ш"){
+    			if(a == "ш" || a == "Ш"){
         			myArr.push("sch")
     			};
-    			if(a == "щ"){
+    			if(a == "щ" || a == "Щ"){
         			myArr.push("sch'")
     			};
-    			if(a == "ь"){
+    			if(a == "ь" || a == "Ь"){
         			myArr.push(":'")
     			};
-    			if(a == "ы"){
+    			if(a == "ы" || a == "Ы"){
         			myArr.push("ioes")
     			};
-    			if(a == "ъ"){
+    			if(a == "ъ" || a == "Ъ"){
         			myArr.push(":{")
     			};
-    			if(a == "э"){
+    			if(a == "э" || a == "Э"){
         			myArr.push("eor")
     			};
-    			if(a == "ю"){
+    			if(a == "ю" || a == "Ю"){
         			myArr.push("uuor")
     			};
-    			if(a == "я"){
+    			if(a == "я" || a == "Я"){
         			myArr.push("jaor")
     			};
     			if(a == " "){
         			myArr.push("+")
     			};
     			if(a == ","){
-        			myArr.push("+:+")
+        		myArr.push("+:+")
     			};
     			if(a == "."){
         			myArr.push("-:-")
     			};
     			if(a == "+"){
-			        myArr.push("1++")
+			       myArr.push("1++")
     			};
     			if(a == "-"){
-        			myArr.push("1--")
+        		myArr.push("1--")
     			};
     			if(a == "*"){
         			myArr.push("1*")
@@ -154,10 +154,38 @@
     			if(a == "?"){
         			myArr.push("V!")
     			};
-			}
+				if(a == "1"){
+					myArr.push("-019")
+				};
+				if(a == "2"){
+					myArr.push("-018")
+				};
+				if(a == "3"){
+					myArr.push("-017")
+				};
+				if(a == "4"){
+					myArr.push("-016")
+				};
+				if(a == "5"){
+					myArr.push("-015")
+				};
+				if(a == "6"){
+					myArr.push("-014")
+				};
+				if(a == "7"){
+					myArr.push("-013")
+				};
+				if(a == "8"){
+					myArr.push("-012")
+				};
+				if(a == "9"){
+					myArr.push("-011")
+				};
+				if(a == "0"){
+					myArr.push("-44")
+				};}
 			var result = myArr.join("")
-			document.getElementById("clow").innerHTML = result;
-        			}
+			document.getElementById("translateOutput").innerHTML = result;}
     </script>
 	</body>
 </html>
