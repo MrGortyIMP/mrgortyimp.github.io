@@ -1,19 +1,19 @@
 # Items
-axe:
-  name: "Секира"
-  icon: none
-  rarity:
-    name: "Редкость" 
-    value: "Обычный"
-  durability:
-    name: "Прочность" 
-    value: 400
-  damage:
-    name: "Урон"
-    value: 8
-  critDamage:
-    name: "Крит. Урон"
-    value: 12
-  attackSpeed:
-    name: "Скорость Атаки"
-    value: "0.8 ударов/с"
+glitch:
+  name: "АбОбф10"
+  icon: "aboba1"
+  coolness:
+    name: "Крутость" 
+    value: 4
+  useability:
+    name: "Полезность" 
+    value: 2
+aboba:
+  name: "ABOBA"
+  icon: "aboba2"
+  coolness:
+    name: "Крутость" 
+    value: 65
+  useability:
+    name: "Полезность" 
+    value: 7
