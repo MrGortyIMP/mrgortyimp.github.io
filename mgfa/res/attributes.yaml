@@ -1,3 +1,28 @@
 # Attributes
+health:
+  name: "Зжоровье"
+  description: "Количество выдерживаемого урона до уничтожения."
+range:
+  name: "Радиус"
+  description: "Максимальная дистанция действия."
+lifetime:
+  name: "Время Жизни"
+  description: "Время до автоматического уничтожения."
+direct_damage:
+  name: "Прямой Урон"
+  description: "Прямой урон по субъекту."
+distance_damage:
+  name: "Дистанционный Урон"
+  description: "Дистанционный урон по субъекту."
+effect:
+  name: "Эффект"
+  description: "Дающий некоторые свойства эффект."
+size:
+  name: "Размер"
+  description: "Размер объекта."
 durability:
   name: "Прочность"
+  description: "Количество использований до поломки."
+efficiency:
+  name: "Эффективность"
+  description: "Скорость и качество добычи материалов."
