@@ -1,23 +1,19 @@
-itemname:
-  name: "Секира" 
+# Items
+axe:
+  name: "Секира"
   icon: none
-  attribute1:
+  rarity:
+    name: "Редкость" 
+    value: "Обычный"
+  durability:
     name: "Прочность" 
-    value: 2675
-  attribute2:
+    value: 400
+  damage:
     name: "Урон"
-    value: 14
-    valuemax: 16
-
-itemname2:
-  name: "Ручка СекБи" 
-  icon: none
-  attribute1:
-    name: "Прочность" 
-    value: 70
-  attribute2:
-    name: "Урон"
-    value: 10
-  attribute3:
-    name: "Холодотность" 
-    value: 500
+    value: 8
+  critDamage:
+    name: "Крит. Урон"
+    value: 12
+  attackSpeed:
+    name: "Скорость Атаки"
+    value: "0.8 ударов/с"
