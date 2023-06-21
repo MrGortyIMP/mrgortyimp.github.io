@@ -1,0 +1,8 @@
+# Objects
+object:
+  name: "Object Name"
+  description: "Object description..."
+  type: "item"
+  class: "weapon"
+  attributes:
+    durability: 500
