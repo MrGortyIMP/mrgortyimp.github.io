@@ -23,69 +23,51 @@
   }
  </style>
 </head>
-<body>
+<body onload="itemReader();">
  <div id="items-container"></div>
-
  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js">
-  // Читаем файл items.yaml
+  function itemReader(){
   fetch('items.yaml')
    .then(response => response.text())
    .then(yamlText => {
-    // Преобразуем текст YAML в объект JavaScript
     const items = jsyaml.load(yamlText);
-
-    // Получаем контейнер для разделов
+    
     const itemsContainer = document.getElementById('items-container');
 
-    // Создаем раздел для каждого предмета
-    Object.keys(items).forEach(key => {
-     const item = items[key];
 
-     // Создаем элемент раздела
+    
+    Object.keys(items).forEach(key => {
+     
+     const item = items[key];
      const itemElement = document.createElement('div');
      itemElement.classList.add('item');
-
-     // Создаем заголовок раздела
+     
      const nameElement = document.createElement('div');
      nameElement.classList.add('item-name');
      nameElement.innerText = item.name;
      itemElement.appendChild(nameElement);
-
-     // Создаем таблицу характеристик
+     
      const charElement = document.createElement('div');
      charElement.classList.add('item-char');
      Object.keys(item).forEach(charKey => {
       if (charKey !== 'name') {
        const char = item[charKey];
-
-       // Создаем строку таблицы
        const rowElement = document.createElement('div');
        rowElement.classList.add('char-row');
-
-       // Создаем ячейку с названием характеристики
        const nameCell = document.createElement('div');
        nameCell.classList.add('char-name');
        nameCell.innerText = char.name;
        rowElement.appendChild(nameCell);
-
-       // Создаем ячейку со значением характеристики
        const valueCell = document.createElement('div');
        valueCell.classList.add('char-value');
        valueCell.innerText = char.value;
        rowElement.appendChild(valueCell);
-
-       // Добавляем строку в таблицу
        charElement.appendChild(rowElement);
-      }
-     });
-
-     // Добавляем таблицу в раздел
+      }});
      itemElement.appendChild(charElement);
-
-     // Добавляем раздел на страницу
      itemsContainer.appendChild(itemElement);
     });
-   });
+   })};
  </script>
 </body>
 </html>
