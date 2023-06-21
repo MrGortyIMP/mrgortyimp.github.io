@@ -51,42 +51,34 @@
           itemElement.classList.add('item');
           const itemNameElement = document.createElement('div');
           itemNameElement.classList.add('item-name');
-          itemNameElement.textContent = itemName;
+          const itemNameElement = document.createElement('h2');
+          itemNameElement.textContent = itemData.name;
           itemElement.appendChild(itemNameElement);
-          
           if (itemData.icon) {
             const itemIconElement = document.createElement('img');
             itemIconElement.classList.add('item-icon');
             itemIconElement.src = `icon/${itemData.icon}.png`;
             itemElement.appendChild(itemIconElement);
           }
-          
           const itemTableElement = document.createElement('div');
           itemTableElement.classList.add('item-table');
           for (const [attrName, attrData] of Object.entries(itemData)) {
             if (attrName !== 'name' && attrName !== 'icon') {
-              
               const itemRowElement = document.createElement('div');
               itemRowElement.classList.add('item-row');
-              itemRowElement.textContent = attrData.name;
-              
               const attrNameElement = document.createElement('div');
               attrNameElement.classList.add('item-cell');
               attrNameElement.textContent = attrData.name;
-              
               const attrValueElement = document.createElement('div');
               attrValueElement.classList.add('item-cell');
               attrValueElement.textContent = attrData.value;
               itemRowElement.appendChild(attrNameElement);
               itemRowElement.appendChild(attrValueElement);
               itemTableElement.appendChild(itemRowElement);
-              
             }
           }
-          
           itemElement.appendChild(itemTableElement);
           itemListElement.appendChild(itemElement);
-          
         }
       });
   </script>
