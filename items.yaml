@@ -1,0 +1,24 @@
+item1:
+  name: "Предмет Один"
+  char1:
+    name: "Здоровье"
+    value: 15
+  char2:
+    name: "Урон"
+    value: 2
+item2:
+  name: "Предмет Два"
+  char1:
+    name: "Здоровье"
+    value: 14
+  char2:
+    name: "Урон"
+    value: 3
+item3:
+  name: "Предмет Три"
+  char1:
+    name: "Здоровье"
+    value: 20
+  char2:
+    name: "Урон"
+    value: 5
