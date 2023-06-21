@@ -1,0 +1,22 @@
+itemname:
+  name: "Секира" 
+  icon: none
+  attribute1:
+    name: "Прочность" 
+    value: 2675
+  attribute2:
+    name: "Урон"
+    value: 14
+
+itemname2:
+  name: "Ручка СекБи" 
+  icon: none
+  attribute1:
+    name: "Прочность" 
+    value: 70
+  attribute2:
+    name: "Урон"
+    value: 10
+  attribute3:
+    name: "Холодотность" 
+    value: 500
