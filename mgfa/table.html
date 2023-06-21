@@ -1,202 +1,196 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Список предметов и монстров</title>
- <meta charset="UTF-8">
- <style>
-  body {
-   font-family: Arial, sans-serif;
-   font-size: 16px;
-   line-height: 1.5;
-   margin: 0;
-   padding: 20px;
-  }
-  h1 {
-   margin-bottom: 20px;
-  }
-  .object-list {
-   display: flex;
-   flex-wrap: wrap;
-   margin-bottom: 50px;
-  }
-  .object {
-   flex-basis: calc(50% - 10px);
-   margin-right: 20px;
-   margin-bottom: 20px;
-   padding: 10px;
-   border: 1px solid #ccc;
-   position: relative;
-  }
-  .object:nth-child(2n) {
-   margin-right: 0;
-  }
-  .object .icon {
-   position: absolute;
-   top: 10px;
-   left: 10px;
-   width: 50px;
-   height: 50px;
-  }
-  .object .name {
-   font-weight: bold;
-   margin-left: 70px;
-   margin-bottom: 10px;
-  }
-  .object .description {
-   margin-left: 70px;
-   margin-bottom: 10px;
-  }
-  .object .type {
-   margin-left: 70px;
-   margin-bottom: 10px;
-  }
-  .object .class {
-   margin-left: 70px;
-   margin-bottom: 10px;
-  }
-  .object .attributes {
-   margin-left: 70px;
-   margin-bottom: 10px;
-  }
-  .attribute {
-   display: inline-block;
-   margin-right: 10px;
-   padding: 5px;
-   border: 1px solid #ccc;
-  }
-  .attribute .icon {
-   display: inline-block;
-   vertical-align: middle;
-   width: 20px;
-   height: 20px;
-   margin-right: 5px;
-  }
-  .classes {
-   margin-bottom: 20px;
-  }
-  .classes select {
-   font-size: 16px;
-   padding: 5px;
-  }
- </style>
+    <meta charset="UTF-8">
+    <title>MrGorty Web Game Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .object-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .object {
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+        }
+        .object:hover {
+            box-shadow: 0 0 5px #ccc;
+        }
+        .object-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .object-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 80px;
+            margin-bottom: 10px;
+        }
+        .object-description {
+            margin-left: 80px;
+            margin-bottom: 10px;
+        }
+        .object-type {
+            margin-left: 80px;
+            margin-bottom: 10px;
+        }
+        .object-class {
+            margin-left: 80px;
+            margin-bottom: 10px;
+        }
+        .attribute {
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+        .attribute-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .filter-label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .filter-select {
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+    </style>
 </head>
 <body>
- <h1>Список предметов и монстров</h1>
- <div class="classes">
-  <label for="class-select">Показать объекты класса:</label>
-  <select id="class-select">
-   <option value="">Все</option>
-  </select>
- </div>
- <div class="object-list"></div>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-<script>
-  const objectListElement = document.querySelector('.object-list');
-  const classSelectElement = document.getElementById('class-select');
-  const objectIconPath = './icons/objects/';
-  const attributeIconPath = './icons/attributes/';
-  const classIconPath = './icons/classes/';
+    <div class="filter">
+        <label class="filter-label" for="class-select">Показать объекты класса:</label>
+        <select id="class-select" class="filter-select">
+            <option value="">Все</option>
+        </select>
+    </div>
+    <div class="object-list"></div>
+    <script>
+        const objectListElement = document.querySelector('.object-list');
+        const classSelectElement = document.querySelector('#class-select');
 
-  fetch('./res/attributes.yaml')
-   .then(response => response.text())
-   .then(yamlText => {
-    const attributes = jsyaml.load(yamlText);
-    for (const [attributeId, attributeData] of Object.entries(attributes)) {
-     const attributeIconElement = document.createElement('img');
-     attributeIconElement.classList.add('icon');
-     attributeIconElement.src = attributeIconPath + attributeId + '.png';
-     const attributeElement = document.createElement('div');
-     attributeElement.classList.add('attribute');
-     attributeElement.appendChild(attributeIconElement);
-     attributeElement.appendChild(document.createTextNode(attributeData.name));
-     document.body.appendChild(attributeElement);
-    }
-   });
+        fetch('./res/objects.yaml')
+            .then(response => response.text())
+            .then(yaml => {
+                const objects = jsyaml.safeLoad(yaml);
+                const classes = new Set();
+                const types = new Set();
+                const attributes = new Map();
 
-  fetch('./res/classes.yaml')
-   .then(response => response.text())
-   .then(yamlText => {
-    const classes = jsyaml.load(yamlText);
-    for (const [classId, classData] of Object.entries(classes)) {
-     const classIconElement = document.createElement('img');
-     classIconElement.classList.add('icon');
-     classIconElement.src = classIconPath + classId + '.png';
-     const classOptionElement = document.createElement('option');
-     classOptionElement.value = classId;
-     classOptionElement.appendChild(classIconElement);
-     classOptionElement.appendChild(document.createTextNode(classData.name));
-     classSelectElement.appendChild(classOptionElement);
-    }
-   });
+                for (const [id, objectData] of Object.entries(objects)) {
+                    const objectElement = document.createElement('div');
+                    objectElement.classList.add('object');
 
-  fetch('./res/objects.yaml')
-   .then(response => response.text())
-   .then(yamlText => {
-    const objects = jsyaml.load(yamlText);
-    for (const [objectId, objectData] of Object.entries(objects)) {
-     const objectElement = document.createElement('div');
-     objectElement.classList.add('object');
-     if (objectData.class) {
-      objectElement.classList.add(objectData.class);
-     }
-     const objectIconElement = document.createElement('img');
-     objectIconElement.classList.add('icon');
-     objectIconElement.src = objectIconPath + objectId + '.png';
-     objectElement.appendChild(objectIconElement);
-     const nameElement = document.createElement('div');
-     nameElement.classList.add('name');
-     nameElement.appendChild(document.createTextNode(objectData.name));
-     objectElement.appendChild(nameElement);
-     if (objectData.description) {
-      const descriptionElement = document.createElement('div');
-      descriptionElement.classList.add('description');
-      descriptionElement.appendChild(document.createTextNode(objectData.description));
-      objectElement.appendChild(descriptionElement);
-     }
-     if (objectData.type) {
-      const typeElement = document.createElement('div');
-      typeElement.classList.add('type');
-      typeElement.appendChild(document.createTextNode('Тип: ' + objectData.type));
-      objectElement.appendChild(typeElement);
-     }
-     if (objectData.class) {
-      const classElement = document.createElement('div');
-      classElement.classList.add('class');
-      const classIconElement = document.createElement('img');
-      classIconElement.classList.add('icon');
-      classIconElement.src = classIconPath + objectData.class + '.png';
-      classElement.appendChild(classIconElement);
-      classElement.appendChild(document.createTextNode('Класс: ' + classes[objectData.class].name));
-      objectElement.appendChild(classElement);
-     }
-     if (objectData.attributes) {
-      const attributesElement = document.createElement('div');
-      attributesElement.classList.add('attributes');
-      for (const attributeId of objectData.attributes) {
-       const attributeData = attributes[attributeId];
-       const attributeIconElement = document.createElement('img');
-       attributeIconElement.classList.add('icon');
-       attributeIconElement.src = attributeIconPath + attributeId + '.png';
-       const attributeElement = document.createElement('div');
-       attributeElement.classList.add('attribute');
-       attributeElement.appendChild(attributeIconElement);
-       attributeElement.appendChild(document.createTextNode(attributeData.name));
-       attributesElement.appendChild(attributeElement);
-      }
-      objectElement.appendChild(attributesElement);
-     }
-     objectListElement.appendChild(objectElement);
-    }
-   });
+                    const objectIconElement = document.createElement('div');
+                    objectIconElement.classList.add('object-icon');
+                    objectIconElement.style.backgroundImage = `url('./icons/objects/${id}.png')`;
 
-  classSelectElement.addEventListener('change', () => {
-   const selectedClass = classSelectElement.value;
-   for (const objectElement of objectListElement.children) {
-    if (!selectedClass || objectElement.classList.contains(selectedClass)) {
-     objectElement.style.display = 'block';
-    } else {
-     objectElement.style.display = 'none';
-    }
-   }
-  });
- </script>
+                    const objectNameElement = document.createElement('div');
+                    objectNameElement.classList.add('object-name');
+                    objectNameElement.textContent = objectData.name;
+
+                    const objectDescriptionElement = document.createElement('div');
+                    objectDescriptionElement.classList.add('object-description');
+                    objectDescriptionElement.textContent = objectData.description;
+
+                    const objectTypeElement = document.createElement('div');
+                    objectTypeElement.classList.add('object-type');
+                    objectTypeElement.textContent = `Тип: ${objectData.type}`;
+
+                    const objectClassElement = document.createElement('div');
+                    objectClassElement.classList.add('object-class');
+                    objectClassElement.textContent = `Класс: ${objectData.class}`;
+
+                    const attributesElement = document.createElement('div');
+                    attributesElement.classList.add('attributes');
+
+                    for (const attribute of objectData.attributes) {
+                        const attributeElement = document.createElement('div');
+                        attributeElement.classList.add('attribute');
+
+                        const attributeIconElement = document.createElement('div');
+                        attributeIconElement.classList.add('attribute-icon');
+                        attributeIconElement.style.backgroundImage = `url('./icons/attributes/${attribute}.png')`;
+
+                        const attributeNameElement = document.createElement('span');
+                        attributeNameElement.textContent = attribute;
+
+                        attributeElement.appendChild(attributeIconElement);
+                        attributeElement.appendChild(attributeNameElement);
+                        attributesElement.appendChild(attributeElement);
+
+                        attributes.set(attribute, attributeElement);
+                    }
+
+                    objectElement.appendChild(objectIconElement);
+                    objectElement.appendChild(objectNameElement);
+                    objectElement.appendChild(objectDescriptionElement);
+                    objectElement.appendChild(objectTypeElement);
+                    objectElement.appendChild(objectClassElement);
+                    objectElement.appendChild(attributesElement);
+
+                    objectListElement.appendChild(objectElement);
+
+                    classes.add(objectData.class);
+                    types.add(objectData.type);
+                }
+
+                for (const objectClass of classes) {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = objectClass;
+                    optionElement.textContent = objectClass;
+                    classSelectElement.appendChild(optionElement);
+                }
+
+                classSelectElement.addEventListener('change', () => {
+                    const selectedClass = classSelectElement.value;
+
+                    for (const [id, objectData] of Object.entries(objects)) {
+                        const objectElement = objectListElement.querySelector(`[data-id="${id}"]`);
+
+                        if (selectedClass && objectData.class !== selectedClass) {
+                            objectElement.style.display = 'none';
+                        } else {
+                            objectElement.style.display = 'block';
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
