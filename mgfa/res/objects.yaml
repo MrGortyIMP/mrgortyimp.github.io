@@ -6,3 +6,15 @@ object:
   class: "weapon"
   attributes:
     durability: 500
+
+omega:
+  name: "Омега"
+  description: "Омега организм, состоящий из кристаллов.."
+  type: "mob"
+  class: "boss"
+  attributes:
+    health: "infinity"
+    size: "any"
+    direct_damage: "infinity"
+    range_damage: "infinity"
+    range: "infinity"
