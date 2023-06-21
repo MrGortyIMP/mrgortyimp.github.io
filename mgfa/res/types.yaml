@@ -1,0 +1,7 @@
+# Types
+mob:
+  name: "Моб"
+  description: ""
+item:
+  name: "Предмет"
+  description: ""
