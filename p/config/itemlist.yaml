@@ -7,6 +7,7 @@ itemname:
   attribute2:
     name: "Урон"
     value: 14
+    valuemax: 16
 
 itemname2:
   name: "Ручка СекБи" 
