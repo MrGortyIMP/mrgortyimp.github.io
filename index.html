@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Список страниц</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-top: 0;
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Список страниц</h1>
+  <ul id="pages-list"></ul>
+
+  <script>
+    // Получаем список файлов в текущей директории
+    fetch('./')
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const links = Array.from(doc.querySelectorAll('a')).map(a => a.href);
+
+        // Фильтруем только HTML-страницы
+        const htmlLinks = links.filter(link => link.endsWith('.html'));
+
+        // Сортируем страницы по алфавиту
+        htmlLinks.sort((a, b) => a.localeCompare(b));
+
+        // Создаем элементы списка страниц
+        const pagesList = document.getElementById('pages-list');
+        htmlLinks.forEach(link => {
+          const fileName = link.split('/').pop();
+          const pageItem = document.createElement('li');
+          const pageLink = document.createElement('a');
+          pageLink.href = link;
+          pageLink.textContent = fileName;
+          pageItem.appendChild(pageLink);
+          pagesList.appendChild(pageItem);
+        });
+      });
+  </script>
+</body>
+</html>
