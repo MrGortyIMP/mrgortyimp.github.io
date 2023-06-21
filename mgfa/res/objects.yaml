@@ -1,20 +1,10 @@
 # Objects
-object:
-  name: "Object Name"
-  description: "Object description..."
+serirk:
+  name: "Серика"
+  description: "Бвстро ломающийся топор безумия!"
   type: "item"
   class: "weapon"
   attributes:
-    durability: 500
-
-omega:
-  name: "Омега"
-  description: "Омега организм, состоящий из кристаллов.."
-  type: "mob"
-  class: "boss"
-  attributes:
-    health: "infinity"
-    size: "any"
-    direct_damage: "infinity"
-    range_damage: "infinity"
-    range: "infinity"
+    durability: 8
+    direct_damage: 20
+    range: "1.4m"
