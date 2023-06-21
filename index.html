@@ -30,11 +30,12 @@
     }
   </style>
 </head>
-<body>
+<body onload="pageDis();">
   <h1>Список страниц</h1>
   <ul id="pages-list"></ul>
 
   <script>
+    function pageDis(){
     // Получаем список файлов в текущей директории
     fetch('./')
       .then(response => response.text())
@@ -61,6 +62,7 @@
           pagesList.appendChild(pageItem);
         });
       });
+     };
   </script>
 </body>
 </html>
