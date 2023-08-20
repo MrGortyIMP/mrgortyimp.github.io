@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Бесконечное отображение</title>
+</head>
+<body>
+    <div id="content"></div>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            var content = document.getElementById('content');
+            var scrolled = window.pageYOffset;
+            var repetitions = Math.floor(scrolled / 4000) + 1;
+            var text = "NhhTnnt1^".repeat(repetitions);
+            content.innerHTML = text;
+        });
+    </script>
+</body>
+</html>
